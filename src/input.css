@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-unies-pink: #FBE4EA;
+    --color-unies-magenta: #931D80;
+    --color-unies-red: #CB0D47;
+  }
+
   @font-face {
     font-family: 'Barlow';
     src: url('/fonts/Barlow/Barlow-Regular.ttf') format('truetype');
