@@ -5,5 +5,12 @@ export default defineConfig({
   build: {
     outDir: 'build',
     emptyOutDir: true,
+    assetsInlineLimit: 0,
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name].[hash][extname]'
+      }
+    }
   },
+  publicDir: 'assets',
 })
