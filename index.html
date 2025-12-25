@@ -40,6 +40,30 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
+        /* Responsive adjustments for navigation */
+        @media (max-width: 768px) {
+            .nav-container {
+                align-items: flex-start !important;
+            }
+            .nav-links {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 0.5rem !important;
+                padding-left: 0 !important;
+                space-x: 0 !important;
+            }
+            .nav-links a {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                width: 100%;
+                text-align: left;
+            }
+            .logo-container {
+                width: 120px !important;
+                height: 120px !important;
+            }
+        }
     </style>
 </head>
 <body class="font-sans antialiased overflow-x-hidden">
@@ -48,15 +72,15 @@
     <header id="accueil" class="relative text-white overflow-visible" style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
         
         <!-- Navigation Bar -->
-        <nav class="container mx-auto px-6 xl:px-24 pt-8 pb-4 relative z-10">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 pt-8 pb-4 relative z-10">
             <div class="max-w-3xl mx-auto">
-                <div class="flex items-start justify-between">
+                <div class="nav-container flex items-start justify-between">
                     <div class="flex items-center space-x-4">
-                        <div class="w-[170px] h-[170px] bg-white rounded-2xl flex items-center justify-center p-4 shadow-lg">
+                        <div class="logo-container w-[170px] h-[170px] bg-white rounded-2xl flex items-center justify-center p-4 shadow-lg">
                             <img src="/assets/logo_unies.png" alt="Uni.e.s pour Draguignan" class="w-full h-full object-contain">
                         </div>
                     </div>
-                    <div class="flex space-x-6">
+                    <div class="nav-links flex space-x-6">
                         <a href="#accueil" class="hover:text-gray-200 transition px-4 py-2 rounded-lg hover:bg-white/10 uppercase">Accueil</a>
                         <a href="#programme" class="hover:text-gray-200 transition px-4 py-2 rounded-lg hover:bg-white/10 uppercase">Notre programme</a>
                         <a href="#contact" class="hover:text-gray-200 transition px-4 py-2 rounded-lg hover:bg-white/10 uppercase">Nous contacter</a>
@@ -66,7 +90,7 @@
         </nav>
 
         <!-- Banner Content -->
-        <div class="container mx-auto px-6 xl:px-24 pt-8 pb-20 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 pt-8 pb-20 relative z-10">
             <div class="max-w-3xl mx-auto">
                 <h1 class="text-5xl font-bold mb-4 uppercase">
                     L'union de la gauche et<br>
@@ -81,15 +105,15 @@
     </header>
 
     <!-- Section 2: Who Are We -->
-    <section id="qui-sommes-nous" class="py-16 bg-white relative z-0">
-        <div class="container mx-auto px-6 xl:px-24">
+    <section id="qui-sommes-nous" class="py-12 sm:py-16 bg-white relative z-0">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24">
             <div class="max-w-3xl mx-auto">
-                <h2 class="text-4xl font-bold mb-8 text-gray-800">Qui sommes-nous ?</h2>
-                <p class="text-base text-gray-700 mb-8">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-gray-800">Qui sommes-nous ?</h2>
+                <p class="text-base text-gray-700 mb-6 sm:mb-8">
                     <b>En vue des municipales, les 15 et 22 mars 2026,</b> nous avons créé une liste citoyenne soutenue par le<b>
                     Parti Communiste, les Ecologistes, la France Insoumise, le Parti Socialiste, Var debout ! et l'Après.</b>
                 </p>
-                <p class="text-base text-gray-700 mb-8 columns-2 gap-8">
+                <p class="text-base text-gray-700 mb-6 sm:mb-8 md:columns-2 gap-8">
                     <b>Nous souhaitons construire des propositions pour tous.tes et pensées par tous.tes.</b> Face aux crises écologiques et sociales, 
                     il est nécessaire de penser un programme participatif. C'est pour cela que nous mettons en place des enquêtes sur les thèmes
                     majeurs de notre campagne : l'école, la santé, la démocratie locale, la gestion des déchets, les mobilités ou encore l'urbanisme... </br>
@@ -114,20 +138,20 @@
     </section>
 
     <!-- Section 3: Candidate Bio -->
-    <section id="programme" class="py-16" style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
-        <div class="container mx-auto px-6 xl:px-24">
+    <section id="programme" class="py-12 sm:py-16" style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24">
             <div class="max-w-3xl mx-auto">
                 <!-- Candidate Photo -->
-                <div class="flex flex-col items-center mb-12">
-                    <div class="w-64 h-64 mb-6">
+                <div class="flex flex-col items-center mb-8 sm:mb-12">
+                    <div class="w-48 h-48 sm:w-64 sm:h-64 mb-4 sm:mb-6">
                         <img src="/assets/photo.png" alt="Candidate" class="w-full h-full rounded-full object-cover shadow-lg">
                     </div>
-                    <h2 class="text-4xl font-bold text-center text-white">Découvrez notre tête de liste</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-white">Découvrez notre tête de liste</h2>
                 </div>
 
                 <!-- Candidate Info -->
-                <div class="mb-8">
-                    <p class="text-white leading-relaxed mb-6 text-center">
+                <div class="mb-6 sm:mb-8">
+                    <p class="text-white leading-relaxed mb-4 text-center">
                         Christophe TERRAS, 57 ans, enseigne l'histoire géographie depuis plus de 20 ans au lycée Jean Moulin.
                         Militant syndical, il est aussi pleinement investi dans la vie associative locale, il est moniteur de plongée au sein du
                         club subaquatique dracénois. Il souhaite porter la voix de la gauche et de l'écologie absente lors des dernières
@@ -138,7 +162,7 @@
                 </div>
                 
                 <!-- Quote Section -->
-                <div class="mt-8 border-2 border-white rounded-2xl p-6 bg-white/10">
+                <div class="mt-6 sm:mt-8 border-2 border-white rounded-2xl p-4 sm:p-6 bg-white/10">
                     <blockquote class="text-lg italic text-white mb-4 text-center">
                         «Le PTE mis en place par Richard Strambio nous a montré qu'il n'y avait pas de démocratie
 locale. Les riverains n'ont jamais été consultés, informés. Les conseils de quartier n'ont pas joué
@@ -155,10 +179,10 @@ dans les quartiers, les enfants dans les écoles !» Var-matin
     </section>
 
     <!-- Section 4: Contact Form -->
-    <section id="contact" class="py-16 bg-white">
-        <div class="container mx-auto px-6 xl:px-24">
+    <section id="contact" class="py-12 sm:py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24">
             <div class="max-w-3xl mx-auto">
-                <h2 class="text-4xl font-bold mb-4 text-gray-800">Rejoignez le mouvement du changement !</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-gray-800">Rejoignez le mouvement du changement !</h2>
                 <p class="text-gray-600 mb-8">
                     Si vous avez des questions, des expériences que vous souhaitez nous partager ou bien l'envie de vous engager, 
                     contactez-nous via ce formulaire.
@@ -219,20 +243,20 @@ dans les quartiers, les enfants dans les écoles !» Var-matin
     </section>
 
     <!-- Section 5: Footer -->
-    <footer class="text-white py-12" style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
-        <div class="container mx-auto px-6 xl:px-24">
+    <footer class="text-white py-8 sm:py-12" style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-24">
             <!-- Partner Logos -->
-            <div class="flex justify-center items-center space-x-12 mb-8 flex-wrap gap-6">
-                <div class="w-32 h-20 flex items-center justify-center">
+            <div class="flex justify-center items-center space-x-6 sm:space-x-12 mb-6 sm:mb-8 flex-wrap gap-4 sm:gap-6">
+                <div class="w-24 h-16 sm:w-32 sm:h-20 flex items-center justify-center">
                     <img src="/assets/logo_ecologie.png" alt="Les Écologistes" class="w-full h-full object-contain">
                 </div>
-                <div class="w-32 h-20 flex items-center justify-center">
+                <div class="w-24 h-16 sm:w-32 sm:h-20 flex items-center justify-center">
                     <img src="/assets/logo_ps.png" alt="Parti Socialiste" class="w-full h-full object-contain">
                 </div>
-                <div class="w-32 h-20 flex items-center justify-center">
+                <div class="w-24 h-16 sm:w-32 sm:h-20 flex items-center justify-center">
                     <img src="/assets/logo_lfi.png" alt="La France Insoumise" class="w-full h-full object-contain">
                 </div>
-                <div class="w-32 h-20 flex items-center justify-center">
+                <div class="w-24 h-16 sm:w-32 sm:h-20 flex items-center justify-center">
                     <img src="/assets/logo_pcf.png" alt="Parti Communiste Français" class="w-full h-full object-contain">
                 </div>
             </div>
