@@ -49,30 +49,34 @@
         
         <!-- Navigation Bar -->
         <nav class="container mx-auto px-6 xl:px-24 pt-8 pb-4 relative z-10">
-            <div class="flex items-start justify-between">
-                <div class="flex items-center space-x-4">
-                    <div class="w-[212px] h-[212px] bg-white rounded-2xl flex items-center justify-center p-4 shadow-lg">
-                        <img src="/assets/logo_unies.png" alt="Uni.e.s pour Draguignan" class="w-full h-full object-contain">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-start justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-[170px] h-[170px] bg-white rounded-2xl flex items-center justify-center p-4 shadow-lg">
+                            <img src="/assets/logo_unies.png" alt="Uni.e.s pour Draguignan" class="w-full h-full object-contain">
+                        </div>
                     </div>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="#accueil" class="hover:text-gray-200 transition px-4 py-2 rounded-lg hover:bg-white/10 uppercase">Accueil</a>
-                    <a href="#programme" class="hover:text-gray-200 transition px-4 py-2 rounded-lg hover:bg-white/10 uppercase">Notre programme</a>
-                    <a href="#contact" class="hover:text-gray-200 transition px-4 py-2 rounded-lg hover:bg-white/10 uppercase">Nous contacter</a>
+                    <div class="flex space-x-6">
+                        <a href="#accueil" class="hover:text-gray-200 transition px-4 py-2 rounded-lg hover:bg-white/10 uppercase">Accueil</a>
+                        <a href="#programme" class="hover:text-gray-200 transition px-4 py-2 rounded-lg hover:bg-white/10 uppercase">Notre programme</a>
+                        <a href="#contact" class="hover:text-gray-200 transition px-4 py-2 rounded-lg hover:bg-white/10 uppercase">Nous contacter</a>
+                    </div>
                 </div>
             </div>
         </nav>
 
         <!-- Banner Content -->
         <div class="container mx-auto px-6 xl:px-24 pt-8 pb-20 relative z-10">
-            <h1 class="text-5xl font-bold mb-4 uppercase">
-                L'union de la gauche et<br>
-                des écologistes
-            </h1>
-            <p class="text-xl mb-4 font-bold italic">Ensemble, faisons de Draguignan une ville meilleure !</p>
-            <a href="#contact" class="inline-block bg-white text-purple-600 font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition shadow-lg uppercase">
-                Rejoignez-nous
-            </a>
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-5xl font-bold mb-4 uppercase">
+                    L'union de la gauche et<br>
+                    des écologistes
+                </h1>
+                <p class="text-xl mb-4 font-bold italic">Ensemble, faisons de Draguignan une ville meilleure !</p>
+                <a href="#contact" class="inline-block bg-white text-purple-600 font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition shadow-lg uppercase">
+                    Rejoignez-nous
+                </a>
+            </div>
         </div>
     </header>
 
@@ -86,7 +90,7 @@
                     Parti Communiste, les Ecologistes, la France Insoumise, le Parti Socialiste, Var debout ! et l'Après.</b>
                 </p>
                 <p class="text-base text-gray-700 mb-8 columns-2 gap-8">
-                    Nous souhaitons construire des propositions pour tous.tes et pensées par tous.tes. Face aux crises écologiques et sociales, 
+                    <b>Nous souhaitons construire des propositions pour tous.tes et pensées par tous.tes.</b> Face aux crises écologiques et sociales, 
                     il est nécessaire de penser un programme participatif. C'est pour cela que nous mettons en place des enquêtes sur les thèmes
                     majeurs de notre campagne : l'école, la santé, la démocratie locale, la gestion des déchets, les mobilités ou encore l'urbanisme... </br>
                     Avec vos voix, votre expérience, nous pouvons faire de Draguignan une ville plus juste, plus solidaire et plus proche de ses habitants.
@@ -218,22 +222,19 @@ dans les quartiers, les enfants dans les écoles !» Var-matin
     <footer class="text-white py-12" style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
         <div class="container mx-auto px-6 xl:px-24">
             <!-- Partner Logos -->
-            <div class="flex justify-center items-center space-x-8 mb-8 flex-wrap">
-                <a href="https://partner1.com" target="_blank" class="hover:opacity-80 transition">
-                    <div class="w-24 h-16 bg-white/20 rounded flex items-center justify-center">
-                        <span class="text-xs">Partner 1</span>
-                    </div>
-                </a>
-                <a href="https://partner2.com" target="_blank" class="hover:opacity-80 transition">
-                    <div class="w-24 h-16 bg-white/20 rounded flex items-center justify-center">
-                        <span class="text-xs">Partner 2</span>
-                    </div>
-                </a>
-                <a href="https://partner3.com" target="_blank" class="hover:opacity-80 transition">
-                    <div class="w-24 h-16 bg-white/20 rounded flex items-center justify-center">
-                        <span class="text-xs">Partner 3</span>
-                    </div>
-                </a>
+            <div class="flex justify-center items-center space-x-12 mb-8 flex-wrap gap-6">
+                <div class="w-32 h-20 flex items-center justify-center">
+                    <img src="/assets/logo_ecologie.png" alt="Les Écologistes" class="w-full h-full object-contain">
+                </div>
+                <div class="w-32 h-20 flex items-center justify-center">
+                    <img src="/assets/logo_ps.png" alt="Parti Socialiste" class="w-full h-full object-contain">
+                </div>
+                <div class="w-32 h-20 flex items-center justify-center">
+                    <img src="/assets/logo_lfi.png" alt="La France Insoumise" class="w-full h-full object-contain">
+                </div>
+                <div class="w-32 h-20 flex items-center justify-center">
+                    <img src="/assets/logo_pcf.png" alt="Parti Communiste Français" class="w-full h-full object-contain">
+                </div>
             </div>
 
             <!-- Separator -->
@@ -261,33 +262,166 @@ dans les quartiers, les enfants dans les écoles !» Var-matin
 
     <!-- Privacy Policy Modal -->
     <div id="privacyModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-        <div class="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+        <div class="bg-white rounded-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto">
             <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
+                <div class="flex justify-between items-center mb-6">
                     <h3 class="text-2xl font-bold text-gray-800">Politique de confidentialité</h3>
                     <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
                 </div>
-                <div class="text-gray-700 space-y-4">
-                    <p>
-                        <strong>Collecte des données :</strong> Nous collectons uniquement les informations que vous nous fournissez 
-                        volontairement via notre formulaire de contact (nom, prénom, email, téléphone, message).
-                    </p>
-                    <p>
-                        <strong>Utilisation des données :</strong> Vos données sont utilisées uniquement pour répondre à vos demandes 
-                        et vous tenir informé de nos activités si vous le souhaitez.
-                    </p>
-                    <p>
-                        <strong>Protection des données :</strong> Nous nous engageons à protéger vos données personnelles et à ne jamais 
-                        les vendre ou les partager avec des tiers sans votre consentement.
-                    </p>
-                    <p>
-                        <strong>Vos droits :</strong> Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de 
-                        suppression de vos données. Pour exercer ces droits, contactez-nous via le formulaire.
-                    </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-700 text-sm">
+                    <!-- First Column -->
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold mb-2">1. Responsable du traitement des données</h4>
+                            <p>Le responsable du traitement des données personnelles collectées sur ce site est Uni.e.s pour Draguignan, France.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">2. Données personnelles collectées</h4>
+                            <p>Dans le cadre de vos interactions avec notre site internet, nous sommes amenés à collecter les données personnelles suivantes :</p>
+                            <p class="font-semibold mt-2">2.1 Données collectées via le formulaire de contact</p>
+                            <ul class="list-disc ml-5">
+                                <li>Nom et prénom</li>
+                                <li>Adresse email</li>
+                                <li>Numéro de téléphone (optionnel)</li>
+                            </ul>
+                            <p class="font-semibold mt-2">2.2 Données de navigation</p>
+                            <ul class="list-disc ml-5">
+                                <li>Adresse IP</li>
+                                <li>Type de navigateur et système d'exploitation</li>
+                                <li>Pages consultées and durée de visite</li>
+                                <li>Source de trafic</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">3. Finalités du traitement</h4>
+                            <p>Vos données personnelles sont collectées et traitées, si vous cochez la case «être recontacté», pour les finalités suivantes :</p>
+                            <ul class="list-disc ml-5">
+                                <li>Vous informer de nos actualités, événements, actions et prises de position</li>
+                                <li>Vous inviter à participer à nos actions, manifestations, réunions publiques et campagnes</li>
+                                <li>Recueillir votre opinion sur des sujets politiques</li>
+                                <li>Respecter nos obligations légales</li>
+                            </ul>
+                            <p class="font-semibold mt-2">Important : Nous ne collectons que les données strictement nécessaires. Nous ne vendons jamais vos données à des tiers commerciaux.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">4. Base légale du traitement</h4>
+                            <p>Le traitement de vos données repose sur :</p>
+                            <ul class="list-disc ml-5">
+                                <li><strong>Consentement :</strong> En remplissant nos formulaires</li>
+                                <li><strong>Intérêt légitime :</strong> Notre action politique de communiquer avec nos sympathisants</li>
+                                <li><strong>Obligation légale :</strong> Respect de la législation sur le financement politique</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">5. Durée de conservation des données</h4>
+                            <ul class="list-disc ml-5">
+                                <li><strong>Sympathisants actifs :</strong> 3 ans maximum après la dernière interaction</li>
+                                <li><strong>Données de navigation :</strong> 13 mois maximum</li>
+                                <li><strong>Après désinscription :</strong> Suppression sous 30 jours</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">6. Destinataires des données</h4>
+                            <p class="font-semibold">6.1 Destinataires internes</p>
+                            <ul class="list-disc ml-5">
+                                <li>Membres du bureau d'Uni.e.s pour Draguignan</li>
+                                <li>Équipe de communication</li>
+                            </ul>
+                            <p class="font-semibold mt-2">6.2 Destinataires externes</p>
+                            <ul class="list-disc ml-5">
+                                <li><strong>Prestataires techniques :</strong> hébergeurs web</li>
+                                <li><strong>Autorités publiques :</strong> En cas d'obligation légale (CNIL, Commission des comptes)</li>
+                            </ul>
+                            <p class="mt-2"><strong>Garanties :</strong> Tous nos prestataires sont soumis à des obligations strictes de confidentialité.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">7. Transfert de données hors UE</h4>
+                            <p>Vos données sont hébergées au sein de l'Union Européenne. En cas de transfert hors UE, des garanties appropriées sont mises en place.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Second Column -->
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold mb-2">8. Sécurité des données</h4>
+                            <p>Nous mettons en œuvre des mesures techniques et organisationnelles pour protéger vos données :</p>
+                            <ul class="list-disc ml-5">
+                                <li>Chiffrement des données (SSL/TLS)</li>
+                                <li>Contrôle d'accès strict</li>
+                                <li>Sauvegardes régulières</li>
+                                <li>Mise à jour des systèmes de sécurité</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">9. Vos droits</h4>
+                            <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+                            <ul class="list-disc ml-5">
+                                <li><strong>Droit d'accès :</strong> Obtenir la confirmation que vos données sont traitées et y accéder.</li>
+                                <li><strong>Droit de rectification :</strong> Demander la correction de vos données inexactes.</li>
+                                <li><strong>Droit à l'effacement :</strong> Demander la suppression de vos données.</li>
+                                <li><strong>Droit à la limitation du traitement :</strong> Demander la limitation du traitement dans certaines situations.</li>
+                                <li><strong>Droit à la portabilité :</strong> Recevoir vos données dans un format lisible par machine.</li>
+                                <li><strong>Droit d'opposition :</strong> Vous opposer au traitement de vos données.</li>
+                                <li><strong>Droit de retirer votre consentement :</strong> Retirer votre consentement à tout moment.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">10. Comment exercer vos droits</h4>
+                            <p>Pour exercer vos droits, contactez-nous par email :</p>
+                            <p class="mt-2"><strong>Email :</strong> uni.e.spourdraguignan@mailo.com</p>
+                            <p class="mt-2">Nous répondrons dans un délai d'un mois maximum.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">11. Cookies et technologies similaires</h4>
+                            <p>Notre site utilise des cookies pour améliorer votre expérience.</p>
+                            <ul class="list-disc ml-5">
+                                <li><strong>Cookies nécessaires :</strong> Essentiels au fonctionnement</li>
+                                <li><strong>Cookies analytiques :</strong> Mesure d'audience</li>
+                                <li><strong>Cookies de réseaux sociaux :</strong> Partage de contenu</li>
+                            </ul>
+                            <p class="mt-2">Vous pouvez gérer vos préférences via les paramètres de votre navigateur.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">12. Liens vers des sites tiers</h4>
+                            <p>Notre site peut contenir des liens vers des sites tiers. Nous ne sommes pas responsables de leurs pratiques de confidentialité.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">13. Modifications de la politique</h4>
+                            <p>Nous nous réservons le droit de modifier cette politique à tout moment. Les modifications seront publiées sur cette page.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">14. Droit de réclamation auprès de la CNIL</h4>
+                            <p>Vous pouvez introduire une réclamation auprès de la CNIL :</p>
+                            <ul class="list-disc ml-5">
+                                <li><strong>En ligne :</strong> www.cnil.fr</li>
+                                <li><strong>Par courrier :</strong> CNIL, 3 Place de Fontenoy, TSA 80715, 75334 Paris Cedex 07</li>
+                                <li><strong>Par téléphone :</strong> 01 53 73 22 22</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">Vous avez des questions ?</h4>
+                            <p><strong>Email :</strong> uni.e.spourdraguignan@mailo.com</p>
+                            <p class="mt-2"><strong>Notre engagement :</strong> Uni.e.s pour Draguignan s'engage à traiter vos données avec respect et à garantir leur sécurité.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="mt-6 text-center">
                     <button onclick="closeModal()" 
-                        class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition uppercase">
+                        class="text-white font-semibold px-8 py-3 rounded-full hover:opacity-90 transition shadow-lg uppercase"
+                        style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
                         Fermer
                     </button>
                 </div>
