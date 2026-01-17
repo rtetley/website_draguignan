@@ -130,25 +130,34 @@ dans les quartiers, les enfants dans les écoles !» Var-matin
                 
                 <form id="contactForm" class="space-y-6" novalidate>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <input type="text" id="nom" name="nom" required placeholder="Nom *"
-                                class="w-full px-4 py-3 rounded-full text-gray-900"
+                        <div class="relative">
+                            <input type="text" id="nom" name="nom" required placeholder="Nom"
+                                class="w-full px-4 py-3 rounded-full text-gray-900 required-field"
                                 style="background-color: var(--color-unies-pink);">
+                            <label for="nom" class="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-900">
+                                <span class="placeholder-text">Nom <span style="color: var(--color-unies-red);">*</span></span>
+                            </label>
                             <p id="nomError" class="text-red-600 text-sm mt-1 ml-4 hidden">Veuillez renseigner votre nom</p>
                         </div>
-                        <div>
-                            <input type="text" id="prenom" name="prenom" required placeholder="Prénom *"
-                                class="w-full px-4 py-3 rounded-full text-gray-900"
+                        <div class="relative">
+                            <input type="text" id="prenom" name="prenom" required placeholder="Prénom"
+                                class="w-full px-4 py-3 rounded-full text-gray-900 required-field"
                                 style="background-color: var(--color-unies-pink);">
+                            <label for="prenom" class="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-900">
+                                <span class="placeholder-text">Prénom <span style="color: var(--color-unies-red);">*</span></span>
+                            </label>
                             <p id="prenomError" class="text-red-600 text-sm mt-1 ml-4 hidden">Veuillez renseigner votre prénom</p>
                         </div>
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <input type="email" id="email" name="email" required placeholder="Email *"
-                                class="w-full px-4 py-3 rounded-full text-gray-900"
+                        <div class="relative">
+                            <input type="email" id="email" name="email" required placeholder="Email"
+                                class="w-full px-4 py-3 rounded-full text-gray-900 required-field"
                                 style="background-color: var(--color-unies-pink);">
+                            <label for="email" class="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-900">
+                                <span class="placeholder-text">Email <span style="color: var(--color-unies-red);">*</span></span>
+                            </label>
                             <p id="emailError" class="text-red-600 text-sm mt-1 ml-4 hidden">Veuillez renseigner une adresse email valide</p>
                         </div>
                         <div>
@@ -169,7 +178,7 @@ dans les quartiers, les enfants dans les écoles !» Var-matin
                             <div class="flex items-center space-x-3">
                                 <input type="checkbox" id="consent" name="consent" required>
                                 <label for="consent" class="text-gray-700 text-sm">
-                                    Je souhaite être recontacté et accepte donc que mes données soient utilisées *
+                                    Je souhaite être recontacté et accepte donc que mes données soient utilisées <span style="color: var(--color-unies-red);">*</span>
                                 </label>
                             </div>
                             <p id="consentError" class="text-red-600 text-sm mt-1 hidden">Vous devez accepter que vos données soient utilisées pour être recontacté</p>

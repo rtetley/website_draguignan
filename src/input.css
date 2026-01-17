@@ -9,6 +9,18 @@
     --color-unies-red: #CB0D47;
   }
 
+  /* Hide default placeholder and show custom label */
+  .required-field::placeholder {
+    color: transparent;
+  }
+  
+  /* Hide custom label when input has value or is focused */
+  .required-field:focus + label .placeholder-text,
+  .required-field:not(:placeholder-shown) + label .placeholder-text {
+    display: none;
+  }
+
+
   @font-face {
     font-family: 'Barlow';
     src: url('/fonts/Barlow/Barlow-Regular.ttf') format('truetype');
