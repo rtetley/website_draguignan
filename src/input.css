@@ -8,6 +8,7 @@
     --color-unies-magenta: #931D80;
     --color-unies-red: #CB0D47;
     --color-unies-green: #39ac6e;
+    color-scheme: only light;
   }
 
   /* Hide default placeholder and show custom label */
