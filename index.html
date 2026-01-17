@@ -130,7 +130,7 @@ dans les quartiers, les enfants dans les écoles !» Var-matin
                     contactez-nous via ce formulaire.
                 </p>
                 
-                <form class="space-y-6">
+                <form id="contactForm" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <input type="text" id="nom" name="nom" required placeholder="Nom"
@@ -172,8 +172,10 @@ dans les quartiers, les enfants dans les écoles !» Var-matin
                         </div>
                     </div>
                     
+                    <div id="formMessage" class="hidden text-center p-4 rounded-lg"></div>
+                    
                     <div class="text-center">
-                        <button type="submit" 
+                        <button type="submit" id="submitButton"
                             class="text-white font-semibold px-8 py-3 rounded-full hover:opacity-90 transition shadow-lg uppercase"
                             style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
                             Envoyer
@@ -395,7 +397,68 @@ dans les quartiers, les enfants dans les écoles !» Var-matin
         </div>
     </div>
 
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
     <script>
+        // Initialize EmailJS with your public key
+        (function() {
+            emailjs.init('nojXzeXy1L0LX2Odn');
+        })();
+
+        // Contact form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const submitButton = document.getElementById('submitButton');
+            const formMessage = document.getElementById('formMessage');
+            
+            // Disable button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Envoi en cours...';
+            formMessage.classList.add('hidden');
+            
+            // Prepare template parameters with formatted data
+            const templateParams = {
+                nom: document.getElementById('nom').value,
+                prenom: document.getElementById('prenom').value,
+                email: document.getElementById('email').value,
+                telephone: document.getElementById('telephone').value || 'Non fourni',
+                message: document.getElementById('message').value,
+                consent: document.getElementById('consent').checked ? 'Oui' : 'Non',
+                date: new Date().toLocaleString('fr-FR')
+            };
+            
+            // Send email using EmailJS
+            emailjs.send('service_gl857vt', 'template_ktj1s0d', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Show success message
+                    formMessage.textContent = 'Votre message a été envoyé avec succès ! Nous vous recontacterons bientôt.';
+                    formMessage.className = 'text-center p-4 rounded-lg bg-green-100 text-green-800';
+                    formMessage.classList.remove('hidden');
+                    
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                    
+                    // Reset button
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Envoyer';
+                }, function(error) {
+                    console.error('FAILED...', error);
+                    
+                    // Show error message
+                    formMessage.textContent = 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer ou nous contacter directement par email.';
+                    formMessage.className = 'text-center p-4 rounded-lg bg-red-100 text-red-800';
+                    formMessage.classList.remove('hidden');
+                    
+                    // Reset button
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Envoyer';
+                });
+        });
+
         function openModal() {
             document.getElementById('privacyModal').classList.remove('hidden');
         }
