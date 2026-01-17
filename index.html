@@ -6,64 +6,6 @@
     <title>Uni.e.s pour Draguignan - Élections Municipales</title>
     <link rel="stylesheet" href="/src/input.css">
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        input, textarea {
-            border: 2px solid transparent;
-        }
-        input:focus, textarea:focus {
-            outline: none;
-            border: 2px solid var(--color-unies-magenta) !important;
-        }
-        input[type="checkbox"] {
-            appearance: none;
-            background-color: var(--color-unies-pink);
-            border: 2px solid transparent;
-            border-radius: 4px;
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-        input[type="checkbox"]:checked {
-            background-color: var(--color-unies-magenta);
-            position: relative;
-        }
-        input[type="checkbox"]:checked::after {
-            content: '✓';
-            position: absolute;
-            color: white;
-            font-size: 14px;
-            font-weight: bold;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        /* Responsive adjustments for navigation */
-        @media (max-width: 768px) {
-            .nav-container {
-                align-items: flex-start !important;
-            }
-            .nav-links {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 0.5rem !important;
-                padding-left: 0 !important;
-                space-x: 0 !important;
-            }
-            .nav-links a {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-                margin-left: 0 !important;
-                width: 100%;
-                text-align: left;
-            }
-            .logo-container {
-                width: 120px !important;
-                height: 120px !important;
-            }
-        }
     </style>
 </head>
 <body class="font-sans antialiased overflow-x-hidden">
