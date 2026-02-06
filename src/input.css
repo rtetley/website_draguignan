@@ -106,6 +106,30 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.header-with-overflow {
+  overflow: visible !important;
+}
+
+.header-with-overflow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -100px;
+  background-image: url('/assets/header-bg.svg');
+  background-size: 1480px;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 10;
+  pointer-events: none;
 }
 
 .menu-font {
