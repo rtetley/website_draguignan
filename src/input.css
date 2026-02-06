@@ -134,9 +134,10 @@ body {
 
 .bio-bg-image {
   position: absolute;
-  top: 0;
+  top: 100px;
   left: 0;
-  width: 100%;
+  right: 0;
+  width: 1480px;
   height: 80%;
   background-image: url('/assets/bg-about.svg');
   background-size:cover;
@@ -144,7 +145,7 @@ body {
   background-repeat: no-repeat;
   border-radius: 200px;
   transform-origin: center;
-  transform: rotate(-15deg);
+  transform: rotate(-10deg);
   overflow: hidden;
   z-index: 0;
 }
