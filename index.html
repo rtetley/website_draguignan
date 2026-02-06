@@ -128,6 +128,52 @@ dans les quartiers, les enfants dans les écoles !» <strong>Var-matin</strong>
         </div>
     </section>
 
+    <!-- Section 3.5: Interview Videos -->
+    <section class="py-12 sm:py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl sm:text-4xl subtitle-font mb-6 sm:mb-8 text-gray-800 text-left">Découvrez les membres de la liste</h2>
+                
+                <!-- Video Container -->
+                <div class="mb-6">
+                    <div class="relative w-full" style="padding-bottom: 56.25%;">
+                        <iframe id="videoPlayer" class="absolute top-0 left-0 w-full h-full rounded-2xl shadow-lg"
+                            src="https://www.youtube.com/embed/VIDEO_ID_1"
+                            title="Interview vidéo"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                
+                <!-- Video Selection Buttons -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <button onclick="switchVideo('VIDEO_ID_1', 0)" 
+                        class="video-btn active-video button-font text-white font-bold px-4 py-3 rounded-full hover:opacity-90 transition shadow-lg uppercase"
+                        style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
+                        Vidéo 1
+                    </button>
+                    <button onclick="switchVideo('VIDEO_ID_2', 1)" 
+                        class="video-btn button-font text-white font-bold px-4 py-3 rounded-full hover:opacity-90 transition shadow-lg uppercase"
+                        style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
+                        Vidéo 2
+                    </button>
+                    <button onclick="switchVideo('VIDEO_ID_3', 2)" 
+                        class="video-btn button-font text-white font-bold px-4 py-3 rounded-full hover:opacity-90 transition shadow-lg uppercase"
+                        style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
+                        Vidéo 3
+                    </button>
+                    <button onclick="switchVideo('VIDEO_ID_4', 3)" 
+                        class="video-btn button-font text-white font-bold px-4 py-3 rounded-full hover:opacity-90 transition shadow-lg uppercase"
+                        style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
+                        Vidéo 4
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Section 4: Contact Form -->
     <section id="contact" class="py-12 sm:py-16 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
@@ -560,6 +606,24 @@ dans les quartiers, les enfants dans les écoles !» <strong>Var-matin</strong>
                 closeModal();
             }
         });
+
+        // Video switcher function
+        function switchVideo(videoId, index) {
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.src = `https://www.youtube.com/embed/${videoId}`;
+            
+            // Update button states
+            const buttons = document.querySelectorAll('.video-btn');
+            buttons.forEach((btn, i) => {
+                if (i === index) {
+                    btn.classList.add('active-video');
+                    btn.style.opacity = '1';
+                } else {
+                    btn.classList.remove('active-video');
+                    btn.style.opacity = '0.7';
+                }
+            });
+        }
     </script>
 
 </body>
