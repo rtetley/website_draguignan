@@ -56,7 +56,7 @@
   }
 
   @font-face {
-    font-family: 'Barlow';
+    font-family: 'Barlow Black';
     src: url('/fonts/Barlow/Barlow-Black.ttf') format('truetype');
     font-weight: 900;
     font-style: normal;
@@ -88,9 +88,17 @@
   }
 
   @font-face {
-    font-family: 'Barlow Condensed';
+    font-family: 'Barlow Condensed Bold';
     src: url('/fonts/Barlow_Condensed/BarlowCondensed-Bold.ttf') format('truetype');
     font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Barlow Condensed Black';
+    src: url('/fonts/Barlow_Condensed/BarlowCondensed-Black.ttf') format('truetype');
+    font-weight: 900;
     font-style: normal;
     font-display: swap;
   }
@@ -101,9 +109,27 @@ html {
 }
 
 .menu-font {
-  font-family: 'Barlow';
+  font-family: 'Barlow Black';
   font-weight: 700;
-  font-size: 12pt;
+  font-size: 16px;
+}
+
+.title-font {
+    font-family: 'Barlow Condensed Black';
+    font-weight: 700;
+    font-size: 72px;
+}
+
+.button-font {
+    font-family: 'Barlow Condensed Black';
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.subtitle-font {
+    font-family: 'Barlow Condensed Bold';
+    font-weight: 600;
+    font-size: 48px;
 }
 
 input, textarea {
