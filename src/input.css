@@ -132,6 +132,23 @@ body {
   pointer-events: none;
 }
 
+.bio-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  background-image: url('/assets/bg-about.svg');
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 200px;
+  transform-origin: center;
+  transform: rotate(-15deg);
+  overflow: hidden;
+  z-index: 0;
+}
+
 .menu-font {
   font-family: 'Barlow Black';
   font-weight: 700;
