@@ -138,7 +138,7 @@ dans les quartiers, les enfants dans les écoles !» <strong>Var-matin</strong>
                 <div class="mb-6">
                     <div class="relative w-full" style="padding-bottom: 56.25%;">
                         <iframe id="videoPlayer" class="absolute top-0 left-0 w-full h-full rounded-2xl shadow-lg"
-                            src="https://www.youtube.com/embed/VIDEO_ID_1"
+                            src="https://www.youtube.com/embed/2QS3wAEsj28"
                             title="Interview vidéo"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -147,27 +147,26 @@ dans les quartiers, les enfants dans les écoles !» <strong>Var-matin</strong>
                     </div>
                 </div>
                 
-                <!-- Video Selection Buttons -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <button onclick="switchVideo('VIDEO_ID_1', 0)" 
-                        class="video-btn active-video button-font text-white font-bold px-4 py-3 rounded-full hover:opacity-90 transition shadow-lg uppercase"
+                <!-- Video Carousel Controls -->
+                <div class="flex items-center justify-center gap-6">
+                    <button onclick="previousVideo()" 
+                        class="text-white font-bold w-12 h-12 rounded-full hover:opacity-90 transition shadow-lg flex items-center justify-center"
                         style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
-                        Vidéo 1
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
                     </button>
-                    <button onclick="switchVideo('VIDEO_ID_2', 1)" 
-                        class="video-btn button-font text-white font-bold px-4 py-3 rounded-full hover:opacity-90 transition shadow-lg uppercase"
+                    
+                    <div class="text-center min-w-[200px]">
+                        <p id="videoTitle" class="text-2xl button-font" style="color: var(--color-unies-magenta);">Christophe Terras</p>
+                    </div>
+                    
+                    <button onclick="nextVideo()" 
+                        class="text-white font-bold w-12 h-12 rounded-full hover:opacity-90 transition shadow-lg flex items-center justify-center"
                         style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
-                        Vidéo 2
-                    </button>
-                    <button onclick="switchVideo('VIDEO_ID_3', 2)" 
-                        class="video-btn button-font text-white font-bold px-4 py-3 rounded-full hover:opacity-90 transition shadow-lg uppercase"
-                        style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
-                        Vidéo 3
-                    </button>
-                    <button onclick="switchVideo('VIDEO_ID_4', 3)" 
-                        class="video-btn button-font text-white font-bold px-4 py-3 rounded-full hover:opacity-90 transition shadow-lg uppercase"
-                        style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
-                        Vidéo 4
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -607,22 +606,33 @@ dans les quartiers, les enfants dans les écoles !» <strong>Var-matin</strong>
             }
         });
 
-        // Video switcher function
+        // Video carousel
+        const videos = [
+            { id: '2QS3wAEsj28', title: 'Christophe Terras' },
+            { id: 'pNtUkCq3wmA', title: 'Sylvie Borgogno' },
+            { id: '_SMGs_lDI9c', title: 'Issa Mettar' },
+            { id: 'OFDQRiEHFwc', title: 'Thomas De Lapeyre' }
+        ];
+        
+        let currentVideoIndex = 0;
+        
         function switchVideo(videoId, index) {
+            currentVideoIndex = index;
             const videoPlayer = document.getElementById('videoPlayer');
-            videoPlayer.src = `https://www.youtube.com/embed/${videoId}`;
+            const videoTitle = document.getElementById('videoTitle');
             
-            // Update button states
-            const buttons = document.querySelectorAll('.video-btn');
-            buttons.forEach((btn, i) => {
-                if (i === index) {
-                    btn.classList.add('active-video');
-                    btn.style.opacity = '1';
-                } else {
-                    btn.classList.remove('active-video');
-                    btn.style.opacity = '0.7';
-                }
-            });
+            videoPlayer.src = `https://www.youtube.com/embed/${videoId}`;
+            videoTitle.textContent = videos[index].title;
+        }
+        
+        function nextVideo() {
+            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+            switchVideo(videos[currentVideoIndex].id, currentVideoIndex);
+        }
+        
+        function previousVideo() {
+            currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+            switchVideo(videos[currentVideoIndex].id, currentVideoIndex);
         }
     </script>
 
