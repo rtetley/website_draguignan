@@ -203,6 +203,9 @@
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10">
         <div class="max-w-4xl mx-auto">
 
+            <!-- Category title -->
+            <h2 id="categoryTitle" class="title-font uppercase mb-6" style="font-size: clamp(2rem, 4vw, 3rem); background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">🚲 La mobilité</h2>
+
             <!-- ===== LA MOBILITÉ ===== -->
             <section class="prog-panel active" id="mobilite" role="tabpanel">
                 <p class="prog-intro">La circulation à certaines heures et le stationnement deviennent de plus en plus problématiques à Draguignan. Ceci est dû à l'absence d'alternatives pratiques à l'automobile, qu'il faut absolument développer et rendre accessibles à tous.tes.</p>
@@ -737,6 +740,9 @@
                 });
                 tab.classList.add('active');
                 tab.setAttribute('aria-selected', 'true');
+
+                // Update category title
+                document.getElementById('categoryTitle').textContent = tab.textContent;
 
                 // Update panels
                 panels.forEach(p => p.classList.remove('active'));
