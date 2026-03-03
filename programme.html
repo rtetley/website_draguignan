@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>Notre Programme - Uni.e.s pour Draguignan</title>
+    <link rel="icon" type="image/png" href="/assets/logo_unies.png">
+    <link rel="apple-touch-icon" href="/assets/logo_unies.png">
+    <link rel="stylesheet" href="/src/input.css">
+    <style>
+        /* Category tab navigation */
+        .prog-tab-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .prog-tab {
+            font-family: 'Barlow Condensed Bold', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.03em;
+            padding: 0.5rem 1.2rem;
+            border-radius: 9999px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+            color: #374151;
+            border-color: #e5e7eb;
+            white-space: nowrap;
+        }
+
+        .prog-tab:hover {
+            border-color: var(--color-unies-magenta);
+            color: var(--color-unies-magenta);
+        }
+
+        .prog-tab.active {
+            background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Category panel */
+        .prog-panel {
+            display: none;
+        }
+        .prog-panel.active {
+            display: block;
+        }
+
+        /* Section subtitle with gradient underline */
+        .prog-subtitle {
+            font-family: 'Barlow Condensed Bold', sans-serif;
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: #1f2937;
+            display: inline-block;
+            padding-bottom: 5px;
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%) 1;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Tick-mark list items */
+        .prog-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem 0;
+        }
+
+        .prog-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            margin-bottom: 0.6rem;
+            font-size: 1rem;
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        .prog-list li .tick {
+            flex-shrink: 0;
+            width: 1.35rem;
+            height: 1.35rem;
+            border-radius: 9999px;
+            background-color: var(--color-unies-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.15rem;
+        }
+
+        .prog-list li .tick svg {
+            width: 0.75rem;
+            height: 0.75rem;
+            stroke: white;
+            fill: none;
+        }
+
+        /* Nested bullet list (for items that have sub-lists) */
+        .prog-sub-list {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin-top: 0.4rem;
+            color: #4b5563;
+        }
+
+        /* Category intro text */
+        .prog-intro {
+            font-size: 1.05rem;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        /* Sticky tab bar on scroll */
+        .prog-tabs-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: white;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        @media (max-width: 768px) {
+            .prog-subtitle {
+                font-size: 1.3rem;
+            }
+            .prog-list li {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-white">
+
+    <!-- Section 1: Header with Banner -->
+    <header id="accueil" class="relative text-white header-with-overflow">
+        
+        <!-- Navigation Bar -->
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-8 pb-4 relative z-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="nav-container flex items-start justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="logo-container w-[150px] h-[150px] bg-white rounded-md flex items-center justify-center p-4 shadow-lg">
+                            <img src="/assets/logo_unies.png" alt="Uni.e.s pour Draguignan" class="w-full h-full object-contain scale-150">
+                        </div>
+                    </div>
+                    <div class="nav-links flex space-x-6 menu-font">
+                        <a href="/" class="hover:text-gray-200 transition px-4 py-2 rounded-lg hover:bg-white/10 uppercase">Accueil</a>
+                        <a href="/programme.html" class="hover:text-gray-200 transition px-4 py-2 rounded-lg hover:bg-white/10 uppercase">Notre programme</a>
+                        <a href="/#contact" class="hover:text-gray-200 transition px-4 py-2 rounded-lg hover:bg-white/10 uppercase">Nous contacter</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Banner Content -->
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-2 pb-20 relative z-10">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-5xl font-bold mb-4 uppercase title-font">
+                    L'union de la gauche et<br>
+                    des écologistes
+                </h1>
+                <p class="text-xl mb-4 font-bold italic">Ensemble, faisons de Draguignan une ville meilleure !</p>
+                <a href="/#contact" class="button-font inline-block bg-white font-bold px-12 py-2 rounded-full hover:bg-gray-100 transition shadow-lg uppercase" style="color: var(--color-unies-magenta);">
+                    Rejoignez-nous
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sticky category tabs -->
+    <div class="prog-tabs-wrapper">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div class="max-w-4xl mx-auto">
+                <div class="prog-tab-nav" role="tablist">
+                    <button class="prog-tab active" data-target="mobilite" role="tab" aria-selected="true">🚲 La mobilité</button>
+                    <button class="prog-tab" data-target="logement" role="tab">🏠 Le logement</button>
+                    <button class="prog-tab" data-target="dechets" role="tab">♻️ Les déchets</button>
+                    <button class="prog-tab" data-target="jeunesse" role="tab">🌱 La jeunesse</button>
+                    <button class="prog-tab" data-target="securite" role="tab">🛡️ La sécurité</button>
+                    <button class="prog-tab" data-target="enfance" role="tab">🎒 L'enfance</button>
+                    <button class="prog-tab" data-target="sante" role="tab">❤️ La santé</button>
+                    <button class="prog-tab" data-target="associations" role="tab">🤝 Les associations</button>
+                    <button class="prog-tab" data-target="culture" role="tab">🎭 La culture</button>
+                    <button class="prog-tab" data-target="democratie" role="tab">🗳️ La démocratie</button>
+                    <button class="prog-tab" data-target="piscine" role="tab">🏊 La piscine</button>
+                    <button class="prog-tab" data-target="financement" role="tab">💶 Le financement</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10">
+        <div class="max-w-4xl mx-auto">
+
+            <!-- ===== LA MOBILITÉ ===== -->
+            <section class="prog-panel active" id="mobilite" role="tabpanel">
+                <p class="prog-intro">La circulation à certaines heures et le stationnement deviennent de plus en plus problématiques à Draguignan. Ceci est dû à l'absence d'alternatives pratiques à l'automobile, qu'il faut absolument développer et rendre accessibles à tous.tes.</p>
+
+                <h3 class="prog-subtitle">Le vélo</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Développement d'un réseau urbain de pistes cyclables continu et, surtout, sécurisé.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Création de parkings sécurisés et d'arceaux pour les vélos.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Aide à l'acquisition de vélos.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'un service de vélos en libre service.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Création d'un atelier municipal de réparation et d'entretien des vélos.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'une politique de sensibilisation sur les bienfaits du vélo dans les écoles, au périscolaire.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Organisation d'une journée du vélo : cet évènement sera l'occasion de mettre en avant la pratique du vélo sous tous ces aspects.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">Les transports en commun</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Amélioration du maillage territorial du réseau urbain de bus.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Amélioration du cadencement entre la gare SNCF et la gare routière.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Des bus plus petits, plus fréquents et à énergie propre.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'une desserte les soirs et les week-ends.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Gratuité des transports en commun pour les enfants scolarisés, les retraités, les jeunes jusqu'à 25 ans et les plus précaires.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">La marche</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Réfection des trottoirs existants et création de trottoirs élargis, continus et accessibles.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Développement des zones piétonnes.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Sécurisation des abords des écoles en les rendant piétons aux heures d'entrée et de sortie.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Sensibilisation des plus jeunes et de toute la population sur les bienfaits de la marche.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">La voiture</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Lancement d'une étude pour la création de parkings relais aux entrées principales de la ville, reliés au centre ville par des navettes fréquentes.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place du système "Blablacar daily" : l'utilisateur indique son planning et ses horaires de la semaine et l'application met en relation les membres qui font le même trajet aux mêmes heures.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'aires d'auto-stop et de co-voiturage.</span></li>
+                </ul>
+            </section>
+
+            <!-- ===== LE LOGEMENT ===== -->
+            <section class="prog-panel" id="logement" role="tabpanel">
+                <p class="prog-intro">Le logement tend à devenir la première préoccupation des français.e.s. Des loyers qui augmentent (7 fois plus que les salaires) jusqu'à devenir le premier poste de dépenses et des logements dégradés. Notre ville n'échappe pas à ces constats.</p>
+
+                <h3 class="prog-subtitle">Le parc locatif</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Rénovation du parc ancien en préemptant, le cas échéant, les bâtiments vides pour augmenter l'offre locative.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Création d'un service municipal de la fraîcheur et de la chaleur pour offrir aux personnes fragiles un abri en cas de vague de chaleur ou de froid.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Lorsque la loi le permet, réquisition des logements vacants pour créer des hébergements d'urgence.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'un guichet municipal unique afin de simplifier les démarches pour les demandeurs de logements sociaux.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Soutien aux associations de locataires pour obliger les bailleurs à faire les rénovations obligatoires des bâtiments.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'un Bail Réel Solidaire (BRS) pour faciliter l'accession sociale à la propriété.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">La construction</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Priorisation de la construction de logements sociaux.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Une végétalisation renforcée des façades et des toitures pour les nouvelles constructions et l'intégration de récupérateurs d'eau de pluie.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'une obligation de constructions bio climatiques pour tout nouveau programme immobilier.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">L'urbanisme</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'une politique de maîtrise de l'urbanisation pour tendre vers le "zéro artificialisation nette" : restauration du centre ancien, programme de rénovation et de recyclage urbain.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'un PLU protégeant les espaces naturels et les terres agricoles. Le terrain Sainte Barbe, menacé par un projet de ZAC doit être sanctuarisé dans sa totalité.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Politique de développement du végétal au cœur de l'espace urbain : micro-forêts, jardins de rue, jardins partagés, parcs pour enfants avec îlots de fraîcheur…</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Développement d'écoquartiers pour rendre l'habitat plus durable : maîtrise des déchets, de l'eau, végétalisation…</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Aller vers l'idée de la ville du quart d'heure : tous les services essentiels à moins d'un quart d'heure à pied des habitations.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Instauration de la règle des 3/30/300 : chacun doit voir 3 arbres de sa fenêtre, avoir 30% d'espaces verts et être à moins de 300 m d'un espace vert.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Restauration et sauvegarde du patrimoine immobilier.</span></li>
+                </ul>
+            </section>
+
+            <!-- ===== LES DÉCHETS ===== -->
+            <section class="prog-panel" id="dechets" role="tabpanel">
+                <p class="prog-intro">Nos propositions visent la réduction des 32 000 tonnes d'ordures ménagères envoyées en décharge ou à l'incinération, chaque année. Un système très coûteux pour la collectivité et pour l'environnement qui peut être amélioré et optimisé !</p>
+
+                <h3 class="prog-subtitle">Réduction des déchets</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Installation de bacs de récupération pour les déchets organiques.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'un broyage des végétaux à domicile et création d'un centre de transformation des déchets verts en broyat et compost.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mieux former la population au tri et à la lutte contre le gaspillage grâce à des ambassadeurs du tri.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'un service de prêt de vaisselle réutilisable.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Création d'une recyclerie municipale avec des ateliers de réparations des objets, une matériauthèque d'outils à louer…</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Suppression du plastique jetable dans tous les services municipaux et de l'agglomération.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">La déchetterie et la collecte</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Les professionnels du BTP pourront aller gratuitement dans des points de reprise tels que Ecominero pour que la benne à gravats ne soit qu'à destination des particuliers.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Rénovation totale ou partielle de la déchetterie actuelle en veillant à la qualité de travail des employés.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Revenir à la collecte devant sa porte pour les foyers éloignés d'un point de collecte.</span></li>
+                </ul>
+            </section>
+
+            <!-- ===== LA JEUNESSE ===== -->
+            <section class="prog-panel" id="jeunesse" role="tabpanel">
+                <p class="prog-intro">Les jeunes Dracénois.e.s doivent vivre et se réaliser dans une ville qui prend en compte leurs difficultés, pour qu'il.elle.s deviennent des acteur.trice.s majeur.e.s du lien social de notre ville.</p>
+
+                <h3 class="prog-subtitle">Le logement</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Augmentation de l'offre de logements étudiants pour s'adapter à l'augmentation des filières présentes sur la ville.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Création d'un Foyer de jeunes travailleurs pour accompagner l'entrée dans le monde du travail des jeunes en situation de précarité.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">La mobilité</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Gratuité des transports en commun pour les moins de 25 ans.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'une prime pour l'achat d'un vélo à partir de 15 ans.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">L'insertion professionnelle</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Emplois municipaux réservés aux jeunes pour leur permettre une meilleure insertion.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Augmentation du nombre d'animateurs dans les cantines, au périscolaire et dans les centres de loisirs, pour répondre aux besoins des familles.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Remplacement des chantiers jeunes (entretien des citernes DFCI, nettoyage des abords de la Nartuby, réhabilitation du patrimoine et des sentiers de randonnée…) par de vrais contrats de travail, des « Contrats de mission pour la jeunesse ».</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Émancipation par la formation et le travail : financement de formations BAFA pour les jeunes, selon leurs revenus.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">L'insertion sociale</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'une politique municipale de prévention de la délinquance et des addictions dont les objectifs seront de favoriser l'éducation, la formation, l'emploi et l'insertion sociale des jeunes les plus précarisés et marginalisés en accompagnant le renforcement du tissu associatif existant et en recrutant des agents municipaux pour exercer ces missions.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Création d'une antenne de la Mission locale aux Collettes (Quartier prioritaire de la politique de la ville : 43 % de pauvreté, 30 % des 16-25 ans non scolarisés et sans emploi).</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">Le sport</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'une politique d'accès et d'éducation au sport.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Subventions supplémentaires pour les associations sportives qui pratiquent des tarifs réduits pour les jeunes de moins de 25 ans et une tarification sociale (montant de subvention égal à 50% du coût supplémentaire supporté par les associations).</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Organisation d'une semaine pour l'éducation au sport, en partenariat avec les associations sportives, destinée aux écoles volontaires.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Création d'un parc « sport et loisirs » sur le terrain de l'ancienne prison (pouvant remplacer le terrain du collège Rostand).</span></li>
+                </ul>
+            </section>
+
+            <!-- ===== LA SÉCURITÉ ===== -->
+            <section class="prog-panel" id="securite" role="tabpanel">
+                <p class="prog-intro">Élément central de la vie en commun et première des libertés. Nous pensons qu'il faut agir en amont par de la présence humaine sur toutes les formes de violences et de discriminations.</p>
+
+                <h3 class="prog-subtitle">Les discriminations</h3>
+                <ul class="prog-list">
+                    <li>
+                        <span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>
+                        <span>Un élu municipal sera chargé de tenir une permanence pour accompagner les habitants victimes de discriminations ou de violences intra familiales en mettant à leur disposition :
+                            <ul class="prog-sub-list">
+                                <li>un service d'aide juridique qui pourra faire appel au défenseur des droits afin de veiller au respect des droits et libertés fondamentales dont chaque citoyen dispose ;</li>
+                                <li>un service d'aide psychologique ;</li>
+                                <li>tout en privilégiant des modes de règlement des différends à l'amiable (quand il s'agit de problème de voisinage par exemple).</li>
+                            </ul>
+                        </span>
+                    </li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Travail de pair avec les associations de défense et de lutte contre les discriminations en leur accordant plus de subventions.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Augmentation des capacités d'accueil d'urgence pour les violences faites aux femmes.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Développement d'un plan de lutte contre le harcèlement et le harcèlement sexuel au travail, en lien avec les organisations syndicales de la collectivité.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'une campagne de lutte contre les discriminations, le racisme et les violences intra familiales grâce à l'aide du corps enseignant et de policiers municipaux chargés de faire de la prévention au quotidien.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">La sécurité</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Création d'une antenne de la police municipale dans le quartier des Collettes.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Déploiement de policier.ère.s municipaux.ales la nuit, d'éducateur.trice.s, de travailleur.euse.s sociaux.ales. Un réseau d'accompagnement humain et de lien entre la ville et les habitant.e.s. pour détecter les signaux faibles et agir en amont.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Amélioration de l'éclairage public la nuit.</span></li>
+                </ul>
+            </section>
+
+            <!-- ===== L'ENFANCE ===== -->
+            <section class="prog-panel" id="enfance" role="tabpanel">
+                <p class="prog-intro">Un projet phare de notre mandature sera de faire en sorte que nos enfants bénéficient d'une alimentation saine et durable, d'un environnement scolaire adapté au réchauffement climatique et d'un centre de loisirs pour tous.</p>
+
+                <h3 class="prog-subtitle">L'école</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Rénovation thermique des bâtiments scolaires et crèches municipales durant la mandature (dans le cadre d'investissements soumis au vote de la population), et en attendant, pose de rideaux occultants, ventilateurs, brumisateurs ou encore, accueil dans les bâtiments climatisés de la ville, si nécessaire.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Végétalisation des cours d'école pour créer des îlots de fraîcheur, favoriser la biodiversité et proposer des activités pédagogiques.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Installation de panneaux solaires sur les écoles.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Refonte du système de réservation de la cantine et du périscolaire afin de permettre l'annulation le matin même.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Meilleure prise en charge des demandes particulières au niveau des repas.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Création d'un service municipal de cantines scolaires. Aliments bio, locaux le plus possible, transformés sur place. La cuisine centrale existe, il faut la reprendre en gestion communale.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Installation de maraîchers bio sur des terres agricoles municipales pour alimenter nos cantines scolaires (terrains existants et propriétés de la commune ou de Dpva).</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Utilisation des jardins maraîchers bio et de la ferme pédagogique municipale que nous allons créer sur le site du PTE abandonné pour les activités des centres de loisirs.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">Périscolaire</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Plus de souplesse dans les réservations et annulations.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Une alimentation plus saine comme avoir des fruits à chaque goûter.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Augmentation du nombre d'animateurs avec des formations adaptées.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'activités plus variées et sensibilisation à notre rapport avec l'environnement.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>De la place pour tous les enfants aux centres de loisirs et au périscolaire.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">Petite enfance</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Création d'une crèche municipale de cinquante places qui tiendra compte des horaires atypiques des parents.</span></li>
+                </ul>
+            </section>
+
+            <!-- ===== LA SANTÉ ===== -->
+            <section class="prog-panel" id="sante" role="tabpanel">
+                <p class="prog-intro">L'accès aux soins est un souci partagé par beaucoup d'habitant.e.s de notre ville. Sans être à proprement parler un désert médical, le manque de praticien.ne.s se fait fortement sentir.</p>
+
+                <h3 class="prog-subtitle">Augmenter l'offre</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Création d'un centre de santé municipal avec des médecins salariés et des spécialistes. Mise à disposition du personnel administratif. Ce sera la municipalité qui encaissera les honoraires.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place de "Draguignan santé", qui permettra aux habitants de joindre un médecin le soir, le week-end et les jours fériés.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Financement dès la 3ème année d'un ou plusieurs étudiants en médecine qui pratiqueront au moins 5 ans sur Draguignan.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Création d'une résidence senior communale supplémentaire.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">Commune zéro faim</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Reprise en main des repas servis aux écoles, crèches et développement du portage dans les foyers et les ehpads.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Politique renforcée de maintien à domicile : application du quotient familial pour le portage de repas.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Au carrefour de la démocratie, de la santé, du soutien aux paysan.n.e.s et de la lutte contre la précarité alimentaire : La Sécurité Sociale de l'Alimentation.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Financée par des cotisations, pilotée par les usager.ère.s, une carte vitale de l'alimentation permettra le remboursement des achats de produits alimentaires conventionnés (locaux, bio, de saison etc.) à hauteur de 100 € mensuels. Nous créerons les conditions de l'expérimentation, pour qu'avant la fin du mandat elle soit étendue à toute la ville.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Création d'une épicerie solidaire avec un maraîchage bio et d'une conserverie.</span></li>
+                </ul>
+            </section>
+
+            <!-- ===== LES ASSOCIATIONS ===== -->
+            <section class="prog-panel" id="associations" role="tabpanel">
+                <p class="prog-intro">Les associations sont des actrices majeures de la vie en société et de la vitalité de notre ville. Notre liste met en avant la participation citoyenne, et donc naturellement pour nous, le tissu associatif est primordial pour une vie locale riche et dynamique.</p>
+
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Pérennisation de l'enveloppe actuelle des subventions données aux associations qui sera, au minimum, indexée sur l'inflation.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Création d'une maison des associations (municipale ou communautaire). Elle sera un lieu ressource avec une aide administrative à la création et au fonctionnement, notamment avec une aide à la recherche de subventions. Elle informera les bénévoles sur les offres de formation qui leur sont proposées et permettra la tenue d'événements.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'un conseil local de la vie associative : un lieu d'échanges et de coopération avec la municipalité. Un audit des besoins sera mené auprès des associations.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Une charte locale d'attribution des subventions sera co-construite par le conseil local de la vie associative et la municipalité.</span></li>
+                </ul>
+            </section>
+
+            <!-- ===== LA CULTURE ===== -->
+            <section class="prog-panel" id="culture" role="tabpanel">
+                <p class="prog-intro">Le bilan culturel est l'une des fiertés de la municipalité sortante. Cependant, les pratiques culturelles sont inégalement réparties, faute de locaux et d'équipements diversifiés.</p>
+
+                <h3 class="prog-subtitle">La culture pour tous</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Développement des lieux de cultures décentralisés dans les quartiers.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>La culture ne sera pas une variable d'ajustement des budgets communaux et/ou communautaires, son budget sera, au minimum, pérennisé.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">Diversification</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Ouverture de l'offre d'expression et de formation culturelle aux pratiques urbaines : Stand Up, Rap, Slam, Graff, Hip Hop… ou toute forme décidées par les habitant.e.s.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place de festivals. L'implication des habitant.e.s. dans ces propositions culturelles se fera à travers des assemblées et/ou des associations de volontaires.</span></li>
+                </ul>
+            </section>
+
+            <!-- ===== LA DÉMOCRATIE ===== -->
+            <section class="prog-panel" id="democratie" role="tabpanel">
+                <p class="prog-intro">Parce que nous pensons qu'une ville ne se gère pas sans ses habitant.e.s, nous allons mettre en place une vraie démocratie communale.</p>
+
+                <h3 class="prog-subtitle">Transparence</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Des élu.e.s plus accessibles avec des permanences régulières et décentralisées dans les quartiers.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Tous les investissements importants et tous les contrats de délégations de service public seront soumis à l'approbation des Dracénois.es.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">La parole aux habitants</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Mise en place d'assemblées thématiques d'habitant.e.s pour établir des diagnostics, faire des propositions, évaluer la cohérence de l'action communale avec les programmes de campagne.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Sur demande de 5 % des habitant.e.s une question sera examinée en conseil municipal.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Référendum d'Initiative Citoyenne : sur demande de 20 % des habitant.e.s un référendum communal sera mis en place sur toute thématique.</span></li>
+                </ul>
+
+                <h3 class="prog-subtitle">La paix</h3>
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Faire de Draguignan une ville de paix par des jumelages, des partenariats avec des pays, des populations, victimes de guerre.</span></li>
+                </ul>
+            </section>
+
+            <!-- ===== LA PISCINE ===== -->
+            <section class="prog-panel" id="piscine" role="tabpanel">
+                <p class="prog-intro">Draguignan et DPVa sont largement sous-équipés en matière de bassins publics. Les préconisations en matière de piscine sont de 0,02 m² de bassin public par habitant. L'hiver, à Draguignan, l'offre est de 0,0094 m²/hab, au niveau de DPVa on tombe à 0,0033 m². La ville est moins bien pourvue qu'il y a 20 ans avec une population qui a augmenté… Cette situation entraîne des difficultés pour les usagers, les clubs et associations, l'accès des scolaires…</p>
+
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Cet équipement devra être pensé à l'échelle intercommunale. Compte-tenu de son coût (15 millions d'euros pour la construction d'une piscine moyenne, et peut-être un demi-million par an pour le fonctionnement), ce projet devra faire l'objet d'un débat avec la population, notamment les clubs sportifs et associations, les représentants de l'éducation nationale… : nécessité de la construction, rénovation extension de l'existant, localisation, taille, mode de gestion… Puis d'une consultation des habitant.e.s.</span></li>
+                </ul>
+            </section>
+
+            <!-- ===== LE FINANCEMENT ===== -->
+            <section class="prog-panel" id="financement" role="tabpanel">
+                <p class="prog-intro">En ce qui concerne les investissements comme la réfection thermique des écoles et la végétalisation des cours, la situation financière de la commune permet la mise en place d'un Plan Pluriannuel d'Investissement conséquent sur la durée du mandat. Ce plan sera débattu et soumis à l'approbation de la population.</p>
+
+                <ul class="prog-list">
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Pour nos autres propositions, aucune n'est révolutionnaire ou n'existe pas dans d'autres communes de la taille de Draguignan. Certaines ne coûtent rien, comme la démocratie communale, d'autres sont largement subventionnables ou s'autofinancent, comme la politique de réduction des déchets.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>La vraie difficulté pour les finances locales, c'est le faible reversement de DPVa aux communes qui la composent. Ce sont plusieurs millions d'euros qui manquent à Draguignan si on la compare avec les villes de même taille. Quant à la dette, elle a été multipliée par plus de deux entre 2019 et 2024, passant de 39,5 millions d'euros à 85,7 millions ! Il y a un vrai problème de gouvernance de DPVa, c'est aussi là que nous devrons dégager des marges budgétaires.</span></li>
+                    <li><span class="tick"><svg viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span><span>Par exemple, DPVa va devoir payer des indemnités pour la rupture du contrat sur le PTE, certainement plusieurs millions d'euros. Si notre proposition de consultation des habitant.e.s pour tous les gros investissements avait été mise en place, ces millions d'euros n'auraient pas été perdus. Notre politique sera génératrice d'économies.</span></li>
+                </ul>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Section 5: Footer -->
+    <footer class="text-white py-8 sm:py-12" style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+            <!-- Partner Logos -->
+            <div class="flex justify-center items-center space-x-6 sm:space-x-12 mb-6 sm:mb-8 flex-wrap gap-4 sm:gap-6">
+                <div class="w-24 h-16 sm:w-32 sm:h-20 flex items-center justify-center">
+                    <img src="/assets/logo_ecologie.png" alt="Les Écologistes" class="w-full h-full object-contain">
+                </div>
+                <div class="w-24 h-16 sm:w-32 sm:h-20 flex items-center justify-center">
+                    <img src="/assets/logo_ps.png" alt="Parti Socialiste" class="w-full h-full object-contain">
+                </div>
+                <div class="w-24 h-16 sm:w-32 sm:h-20 flex items-center justify-center">
+                    <img src="/assets/logo_lfi.png" alt="La France Insoumise" class="w-full h-full object-contain">
+                </div>
+                <div class="w-24 h-16 sm:w-32 sm:h-20 flex items-center justify-center">
+                    <img src="/assets/logo_pcf.png" alt="Parti Communiste Français" class="w-full h-full object-contain">
+                </div>
+            </div>
+
+            <!-- Separator -->
+            <div class="w-full h-px bg-white/30 mb-6"></div>
+
+            <!-- Copyright -->
+            <div class="text-center">
+                <p class="text-white/80 mb-4">2025 Uni.e.s pour Draguignan - Tous droits réservés</p>
+                
+                <!-- Social Links -->
+                <div class="flex justify-center space-x-6">
+                    <a href="https://www.facebook.com/profile.php?id=61577514853892" target="_blank" class="text-white/80 hover:text-white transition">
+                        Facebook
+                    </a>
+                    <a href="https://www.instagram.com/uni.e.spourdraguignan/" target="_blank" class="text-white/80 hover:text-white transition">
+                        Instagram
+                    </a>
+                    <button onclick="openModal()" class="text-white/80 hover:text-white transition">
+                        Politique de confidentialité
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-800">Politique de confidentialité</h3>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-700 text-sm">
+                    <!-- First Column -->
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold mb-2">1. Responsable du traitement des données</h4>
+                            <p>Le responsable du traitement des données personnelles collectées sur ce site est Uni.e.s pour Draguignan, France.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">2. Données personnelles collectées</h4>
+                            <p>Dans le cadre de vos interactions avec notre site internet, nous sommes amenés à collecter les données personnelles suivantes :</p>
+                            <p class="font-semibold mt-2">2.1 Données collectées via le formulaire de contact</p>
+                            <ul class="list-disc ml-5">
+                                <li>Nom et prénom</li>
+                                <li>Adresse email</li>
+                                <li>Numéro de téléphone (optionnel)</li>
+                            </ul>
+                            <p class="font-semibold mt-2">2.2 Données de navigation</p>
+                            <ul class="list-disc ml-5">
+                                <li>Adresse IP</li>
+                                <li>Type de navigateur et système d'exploitation</li>
+                                <li>Pages consultées and durée de visite</li>
+                                <li>Source de trafic</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">3. Finalités du traitement</h4>
+                            <p>Vos données personnelles sont collectées et traitées, si vous cochez la case «être recontacté», pour les finalités suivantes :</p>
+                            <ul class="list-disc ml-5">
+                                <li>Vous informer de nos actualités, événements, actions et prises de position</li>
+                                <li>Vous inviter à participer à nos actions, manifestations, réunions publiques et campagnes</li>
+                                <li>Recueillir votre opinion sur des sujets politiques</li>
+                                <li>Respecter nos obligations légales</li>
+                            </ul>
+                            <p class="font-semibold mt-2">Important : Nous ne collectons que les données strictement nécessaires. Nous ne vendons jamais vos données à des tiers commerciaux.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">4. Base légale du traitement</h4>
+                            <p>Le traitement de vos données repose sur :</p>
+                            <ul class="list-disc ml-5">
+                                <li><strong>Consentement :</strong> En remplissant nos formulaires</li>
+                                <li><strong>Intérêt légitime :</strong> Notre action politique de communiquer avec nos sympathisants</li>
+                                <li><strong>Obligation légale :</strong> Respect de la législation sur le financement politique</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">5. Durée de conservation des données</h4>
+                            <ul class="list-disc ml-5">
+                                <li><strong>Sympathisants actifs :</strong> 3 ans maximum après la dernière interaction</li>
+                                <li><strong>Données de navigation :</strong> 13 mois maximum</li>
+                                <li><strong>Après désinscription :</strong> Suppression sous 30 jours</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">6. Destinataires des données</h4>
+                            <p class="font-semibold">6.1 Destinataires internes</p>
+                            <ul class="list-disc ml-5">
+                                <li>Membres du bureau d'Uni.e.s pour Draguignan</li>
+                                <li>Équipe de communication</li>
+                            </ul>
+                            <p class="font-semibold mt-2">6.2 Destinataires externes</p>
+                            <ul class="list-disc ml-5">
+                                <li><strong>Prestataires techniques :</strong> hébergeurs web</li>
+                                <li><strong>Autorités publiques :</strong> En cas d'obligation légale (CNIL, Commission des comptes)</li>
+                            </ul>
+                            <p class="mt-2"><strong>Garanties :</strong> Tous nos prestataires sont soumis à des obligations strictes de confidentialité.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">7. Transfert de données hors UE</h4>
+                            <p>Vos données sont hébergées au sein de l'Union Européenne. En cas de transfert hors UE, des garanties appropriées sont mises en place.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Second Column -->
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold mb-2">8. Sécurité des données</h4>
+                            <p>Nous mettons en œuvre des mesures techniques et organisationnelles pour protéger vos données :</p>
+                            <ul class="list-disc ml-5">
+                                <li>Chiffrement des données (SSL/TLS)</li>
+                                <li>Contrôle d'accès strict</li>
+                                <li>Sauvegardes régulières</li>
+                                <li>Mise à jour des systèmes de sécurité</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">9. Vos droits</h4>
+                            <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+                            <ul class="list-disc ml-5">
+                                <li><strong>Droit d'accès :</strong> Obtenir la confirmation que vos données sont traitées et y accéder.</li>
+                                <li><strong>Droit de rectification :</strong> Demander la correction de vos données inexactes.</li>
+                                <li><strong>Droit à l'effacement :</strong> Demander la suppression de vos données.</li>
+                                <li><strong>Droit à la limitation du traitement :</strong> Demander la limitation du traitement dans certaines situations.</li>
+                                <li><strong>Droit à la portabilité :</strong> Recevoir vos données dans un format lisible par machine.</li>
+                                <li><strong>Droit d'opposition :</strong> Vous opposer au traitement de vos données.</li>
+                                <li><strong>Droit de retirer votre consentement :</strong> Retirer votre consentement à tout moment.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">10. Comment exercer vos droits</h4>
+                            <p>Pour exercer vos droits, contactez-nous par email :</p>
+                            <p class="mt-2"><strong>Email :</strong> uni.e.spourdraguignan@mailo.com</p>
+                            <p class="mt-2">Nous répondrons dans un délai d'un mois maximum.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">11. Cookies et technologies similaires</h4>
+                            <p>Notre site utilise des cookies pour améliorer votre expérience.</p>
+                            <ul class="list-disc ml-5">
+                                <li><strong>Cookies nécessaires :</strong> Essentiels au fonctionnement</li>
+                                <li><strong>Cookies analytiques :</strong> Mesure d'audience</li>
+                                <li><strong>Cookies de réseaux sociaux :</strong> Partage de contenu</li>
+                            </ul>
+                            <p class="mt-2">Vous pouvez gérer vos préférences via les paramètres de votre navigateur.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">12. Liens vers des sites tiers</h4>
+                            <p>Notre site peut contenir des liens vers des sites tiers. Nous ne sommes pas responsables de leurs pratiques de confidentialité.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">13. Modifications de la politique</h4>
+                            <p>Nous nous réservons le droit de modifier cette politique à tout moment. Les modifications seront publiées sur cette page.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">14. Droit de réclamation auprès de la CNIL</h4>
+                            <p>Vous pouvez introduire une réclamation auprès de la CNIL :</p>
+                            <ul class="list-disc ml-5">
+                                <li><strong>En ligne :</strong> www.cnil.fr</li>
+                                <li><strong>Par courrier :</strong> CNIL, 3 Place de Fontenoy, TSA 80715, 75334 Paris Cedex 07</li>
+                                <li><strong>Par téléphone :</strong> 01 53 73 22 22</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">Vous avez des questions ?</h4>
+                            <p><strong>Email :</strong> uni.e.spourdraguignan@mailo.com</p>
+                            <p class="mt-2"><strong>Notre engagement :</strong> Uni.e.s pour Draguignan s'engage à traiter vos données avec respect et à garantir leur sécurité.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 text-center">
+                    <button onclick="closeModal()" 
+                        class="text-white font-bold px-10 py-3 rounded-full hover:opacity-90 transition shadow-lg uppercase"
+                        style="background: linear-gradient(135deg, var(--color-unies-magenta) 0%, var(--color-unies-red) 100%);">
+                        Fermer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('privacyModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('privacyModal').classList.add('hidden');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('privacyModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Tab switching logic
+        const tabs = document.querySelectorAll('.prog-tab');
+        const panels = document.querySelectorAll('.prog-panel');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.target;
+
+                // Update tabs
+                tabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+
+                // Update panels
+                panels.forEach(p => p.classList.remove('active'));
+                document.getElementById(target).classList.add('active');
+
+                // Smooth scroll to just below the sticky nav
+                const tabsBar = document.querySelector('.prog-tabs-wrapper');
+                const offset = tabsBar.getBoundingClientRect().bottom + window.scrollY + 16;
+                window.scrollTo({ top: offset, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
