@@ -748,10 +748,7 @@
                 panels.forEach(p => p.classList.remove('active'));
                 document.getElementById(target).classList.add('active');
 
-                // Smooth scroll to just below the sticky nav
-                const tabsBar = document.querySelector('.prog-tabs-wrapper');
-                const offset = tabsBar.getBoundingClientRect().bottom + window.scrollY + 16;
-                window.scrollTo({ top: offset, behavior: 'smooth' });
+
             });
         });
     </script>
